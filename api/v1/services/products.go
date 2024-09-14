@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"time"
 
-	M "github.com/atharvbhadange/go-api-template/models"
-	T "github.com/atharvbhadange/go-api-template/types"
+	M "modbus-dlc/models"
+	T "modbus-dlc/types"
 	"github.com/gofiber/fiber/v2"
 	"github.com/volatiletech/sqlboiler/v4/boil"
 )

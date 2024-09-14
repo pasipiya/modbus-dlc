@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/atharvbhadange/go-api-template/constants"
+	"modbus-dlc/constants"
 )
 
 type Config struct {

@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 
-	H "github.com/atharvbhadange/go-api-template/handler"
+	H "modbus-dlc/handler"
 )
 
 func RateLimit(count int, duration time.Duration) fiber.Handler {

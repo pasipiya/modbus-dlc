@@ -1,14 +1,14 @@
-package connections
+package modbusconnection
 
 import (
 	"time"
 	"github.com/grid-x/modbus"
 	"fmt"
-	"log"
+    "sync"
 )
 
 var (
-    clientInstance *modbus.Client
+    clientInstance modbus.Client
     once           sync.Once
 )
 
@@ -19,9 +19,10 @@ type ModbusConfig struct {
     StopBits   int
     Parity     string
     Timeout    time.Duration
+    SlaveID    byte
 }
 
-func getClient(config ModbusConfig) (*modbus.Client, error) {
+func getClient(config ModbusConfig) (modbus.Client, error) {
     var err error
     once.Do(func() {
         handler := modbus.NewRTUClientHandler(config.Port)
@@ -30,6 +31,7 @@ func getClient(config ModbusConfig) (*modbus.Client, error) {
         handler.StopBits = config.StopBits
         handler.Parity = config.Parity
         handler.Timeout = config.Timeout
+        handler.SlaveID = config.SlaveID
 
         err = handler.Connect()
         if err != nil {
@@ -42,7 +44,7 @@ func getClient(config ModbusConfig) (*modbus.Client, error) {
     return clientInstance, err
 }
 
-func GetModbusClient() (*modbus.Client, error) {
+func GetModbusClient(SlaveID byte) (modbus.Client, error) {
     config := ModbusConfig{
         Port:       "/dev/ttyUSB0",
         BaudRate:   19200,
@@ -50,18 +52,16 @@ func GetModbusClient() (*modbus.Client, error) {
         StopBits:   1,
         Parity:     "N",
         Timeout:    10 * time.Second,
+        SlaveID:    SlaveID,
     }
     return getClient(config)
 }
 
 func WriteRegister(slaveID byte, registerAddress uint16, value uint16) error {
-    client, err := GetModbusClient()
+    client, err := GetModbusClient(slaveID)
     if err != nil {
         return err
     }
-
-    handler := client.GetHandler()
-    handler.SetSlave(slaveID)
 
     _, err = client.WriteSingleRegister(registerAddress, value)
     if err != nil {
@@ -72,13 +72,10 @@ func WriteRegister(slaveID byte, registerAddress uint16, value uint16) error {
 }
 
 func ReadRegister(slaveID byte, registerAddress uint16, registerLength uint16) ([]byte, error) {
-    client, err := GetModbusClient()
+    client, err := GetModbusClient(slaveID)
     if err != nil {
         return nil, err
     }
-
-    handler := client.GetHandler()
-    handler.SetSlave(slaveID)
 
     results, err := client.ReadHoldingRegisters(registerAddress, registerLength)
     if err != nil {

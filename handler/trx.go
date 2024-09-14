@@ -5,7 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 
-	U "github.com/atharvbhadange/go-api-template/utils"
+	U "modbus-dlc/utils"
 )
 
 func rollbackCtxTrx(ctx *fiber.Ctx) {

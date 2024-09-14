@@ -7,7 +7,7 @@ import (
 
 	_ "github.com/lib/pq"
 
-	C "github.com/atharvbhadange/go-api-template/config"
+	C "modbus-dlc/config"
 )
 
 var PostgresConn *sql.DB

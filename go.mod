@@ -1,4 +1,4 @@
-module github.com/atharvbhadange/go-api-template
+module modbus-dlc
 
 go 1.20
 

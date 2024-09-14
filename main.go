@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/atharvbhadange/go-api-template/cmd"
-	"github.com/atharvbhadange/go-api-template/config"
-	"github.com/atharvbhadange/go-api-template/db"
+	"modbus-dlc/cmd"
+	"modbus-dlc/config"
+	"modbus-dlc/db"
 	"github.com/joho/godotenv"
 )
 

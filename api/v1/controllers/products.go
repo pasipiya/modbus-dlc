@@ -3,9 +3,9 @@ package controllers
 import (
 	"github.com/gofiber/fiber/v2"
 
-	S "github.com/atharvbhadange/go-api-template/api/v1/services"
-	H "github.com/atharvbhadange/go-api-template/handler"
-	U "github.com/atharvbhadange/go-api-template/utils"
+	S "modbus-dlc/api/v1/services"
+	H "modbus-dlc/handler"
+	U "modbus-dlc/utils"
 )
 
 func GetProducts(ctx *fiber.Ctx) error {

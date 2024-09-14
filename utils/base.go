@@ -3,7 +3,7 @@ package utils
 import (
 	"database/sql"
 
-	"github.com/atharvbhadange/go-api-template/db"
+	"modbus-dlc/db"
 	"github.com/gofiber/fiber/v2"
 )
 

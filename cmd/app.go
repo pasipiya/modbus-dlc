@@ -5,8 +5,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/requestid"
 
-	"github.com/atharvbhadange/go-api-template/api/v1/routes"
-	H "github.com/atharvbhadange/go-api-template/handler"
+	"modbus-dlc/api/v1/routes"
+	H "modbus-dlc/handler"
 )
 
 func InitApp() *fiber.App {

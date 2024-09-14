@@ -3,9 +3,9 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 
-	"github.com/atharvbhadange/go-api-template/api/v1/controllers"
-	mw "github.com/atharvbhadange/go-api-template/api/v1/middleware"
-	C "github.com/atharvbhadange/go-api-template/constants"
+	"modbus-dlc/api/v1/controllers"
+	mw "modbus-dlc/api/v1/middleware"
+	C "modbus-dlc/constants"
 )
 
 func SetupProductsRoutes(router fiber.Router) {

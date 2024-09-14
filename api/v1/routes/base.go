@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/atharvbhadange/go-api-template/api/v1/controllers"
+	"modbus-dlc/api/v1/controllers"
 	"github.com/gofiber/fiber/v2"
 )
 

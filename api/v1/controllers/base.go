@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	C "github.com/atharvbhadange/go-api-template/config"
+	C "modbus-dlc/config"
 	"github.com/gofiber/fiber/v2"
 )
 
